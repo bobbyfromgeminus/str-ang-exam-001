@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th colspan="4">
+                <label>Search:</label> <input type="text" class="form-control" [(ngModel)]="filterPhrase" placeholder="Find the name of your favorite hero!">
+            </th>
+        </tr>
+        <tr>
+            <th><button class="btn btn-outline-secondary" (click)="getSortProp('id')">id <i class="fa fa-angle-down"></i></button></th>
+            <th><button class="btn btn-outline-secondary" (click)="getSortProp('name')">name <i class="fa fa-angle-down"></i></button></th>
+            <th><button class="btn btn-outline-secondary" (click)="getSortProp('superPower')">superPower <i class="fa fa-angle-down"></i></button></th>
+            <th><button class="btn btn-outline-secondary" (click)="getSortProp('address')">address <i class="fa fa-angle-down"></i></button></th>
+        </tr>
+        <tr>
+            <th colspan="4"><span>Click on any of the header elements to sort the data!</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hero of heroes | filter:filterPhrase:'name' | sorter:sortby:direction">
+            <td>{{ hero.id }}</td>
+            <td><span>{{ hero.name }}</span></td>
+            <td>{{ hero.superPower }}</td>
+            <td>{{ hero.address }}</td>     
+        </tr>
+    </tbody>
+</table>
